@@ -34,14 +34,8 @@ export const createLinkSchema = linkSchema.omit({
 
 export const cloudflareInfoSchema = z.object({
   country: z.string().optional(),
-  latitude: z
-    .string()
-    .transform((val) => (val ? Number(val) : undefined))
-    .optional(),
-  longitude: z
-    .string()
-    .transform((val) => (val ? Number(val) : undefined))
-    .optional(),
+  latitude: z.coerce.number(),
+  longitude: z.coerce.number(),
 });
 
 export const durableObjectGeoClickSchama = z.object({
