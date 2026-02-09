@@ -1,15 +1,26 @@
-import { getLink } from "@repo/data-ops/queries/links";
-import { Hono } from "hono";
+import { getDestinationForCountry } from '@/helpers/route-ops';
+import { getLink } from '@repo/data-ops/queries/links';
+import { cloudflareInfoSchema } from '@repo/data-ops/zod-schema/links';
+import { Hono } from 'hono';
 
 export const App = new Hono<{ Bindings: Env }>();
 
-App.get("/:id", async (ctx) => {
-	if (!ctx.req.raw.cf) {
-		throw new Error('CF object is not available in the request context.');
+App.get('/:id', async (ctx) => {
+	const id = ctx.req.param('id');
+	const linkInfo = await getLink(id);
+
+	if (!linkInfo) {
+		return ctx.text('Destination not found', 404);
 	}
 
-    const id = ctx.req.param("id");
-    const linkFromDb = await getLink(id);
+	const cfHeader = cloudflareInfoSchema.safeParse(ctx.req.raw.cf);
 
-	return ctx.json(linkFromDb);
+	if (!cfHeader.success) {
+		return ctx.text('Invalid Cloudflare header', 400);
+	}
+
+	const headers = cfHeader.data;
+	const destination = getDestinationForCountry(linkInfo, headers.country);
+
+	return ctx.redirect(destination);
 });
