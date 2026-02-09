@@ -22,14 +22,20 @@
 		{
 			"binding": "CACHE",
 			"id": "d8e04a01b643447fb4dd387f16876146",
-			"remote": true
-		}
+			"remote": true,
+		},
 	],
 	"queues": {
 		"consumers": [
 			{
 				"queue": "smart-links-data-queue-stage",
-			}
-		]
-	}
+			},
+		],
+		"producers": [
+			{
+				"binding": "QUEUE",
+				"queue": "smart-links-data-queue-stage",
+			},
+		],
+	},
 }
