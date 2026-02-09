@@ -26,6 +26,7 @@ export default class DataService extends WorkerEntrypoint<Env> {
 						// Handle link click event
 						console.log("Processing LINK_CLICK event:", event);
 						await handleLinkClick(this.env, event);
+						break;
 				}
 			}
 		}
