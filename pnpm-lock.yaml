@@ -40,7 +40,7 @@ importers:
         version: 3.25.76
     devDependencies:
       '@cloudflare/puppeteer':
-        specifier: ^1.0.5
+        specifier: ^1.0.6
         version: 1.0.6
       '@cloudflare/vitest-pool-workers':
         specifier: ^0.8.71

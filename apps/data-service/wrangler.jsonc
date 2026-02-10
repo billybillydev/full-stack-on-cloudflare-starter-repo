@@ -49,4 +49,7 @@
 			"class_name": "DestinationEvaluationWorkflow",
 		},
 	],
+	"browser": {
+		"binding": "VIRTUAL_BROWSER",
+	},
 }
