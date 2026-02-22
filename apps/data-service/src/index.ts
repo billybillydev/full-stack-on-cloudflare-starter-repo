@@ -5,6 +5,7 @@ import { QueueMessageSchema } from '@repo/data-ops/zod-schema/queue';
 import { WorkerEntrypoint } from 'cloudflare:workers';
 
 export { DestinationEvaluationWorkflow } from "@/workflows/destination-evalutation-workflow";
+export { EvaluationScheduler } from '@/durable-objects/evaluation-scheduler';
 
 export default class DataService extends WorkerEntrypoint<Env> {
 	constructor(ctx: ExecutionContext, env: Env) {
