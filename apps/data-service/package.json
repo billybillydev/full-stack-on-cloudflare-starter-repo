@@ -18,6 +18,7 @@
 		"wrangler": "^4.59.3"
 	},
 	"dependencies": {
+		"@mosidev/dat": "^2.3.0",
 		"@repo/data-ops": "workspace:*",
 		"ai": "^6.0.69",
 		"hono": "^4.11.4",
