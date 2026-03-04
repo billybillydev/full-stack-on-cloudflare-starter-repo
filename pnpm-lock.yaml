@@ -17,6 +17,9 @@ importers:
 
   apps/data-service:
     dependencies:
+      '@mosidev/dat':
+        specifier: ^2.3.0
+        version: 2.3.0(typescript@5.9.3)
       '@repo/data-ops':
         specifier: workspace:*
         version: link:../../packages/data-ops
@@ -2469,6 +2472,14 @@ packages:
 
   /@levischuck/tiny-cbor@0.2.11:
     resolution: {integrity: sha512-llBRm4dT4Z89aRsm6u2oEZ8tfwL/2l6BwpZ7JcyieouniDECM5AqNgr/y08zalEIvW3RSK4upYyybDcmjXqAow==}
+    dev: false
+
+  /@mosidev/dat@2.3.0(typescript@5.9.3):
+    resolution: {integrity: sha512-Z0YsH6QC5GsNIF4u/ilIGNqjdgsqj8JjpD7RGmHOuQHpmsdPOv1coXbuj58UgP7l44kaqN6hOJ64ABnevCUUVA==}
+    peerDependencies:
+      typescript: ^5.0.0
+    dependencies:
+      typescript: 5.9.3
     dev: false
 
   /@noble/ciphers@0.6.0:
