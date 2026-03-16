@@ -1,3 +1,4 @@
+import { Dat } from '@mosidev/dat';
 import { getLink } from '@repo/data-ops/queries/links';
 import { linkSchema, LinkSchemaType } from '@repo/data-ops/zod-schema/links';
 import { LinkClickMessageType } from '@repo/data-ops/zod-schema/queue';
@@ -51,4 +52,24 @@ export async function scheduleEvalWorkflow(env: Env, event: LinkClickMessageType
 		destinationUrl: event.data.destination,
 		destinationCountryCode: event.data.country || 'UNKNOWN',
 	});
+}
+
+export async function captureLinkClickInBackground(env: Env, event: LinkClickMessageType) {
+	await env.QUEUE.send(event);
+
+	const durableObjectId = env.LINK_CLICK_TRACKER_OBJECT.idFromName(event.data.accountId);
+	const stub = env.LINK_CLICK_TRACKER_OBJECT.get(durableObjectId);
+
+	if (!event.data.latitude || !event.data.longitude || !event.data.country) {
+		return;
+	}
+
+	console.log('Capturing link click in background', event.data);
+
+	await stub.addClick(
+		event.data.latitude,
+		event.data.longitude,
+		event.data.country,
+		Dat.now()
+	);
 }
