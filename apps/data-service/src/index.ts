@@ -6,6 +6,7 @@ import { WorkerEntrypoint } from 'cloudflare:workers';
 
 export { DestinationEvaluationWorkflow } from "@/workflows/destination-evalutation-workflow";
 export { EvaluationScheduler } from '@/durable-objects/evaluation-scheduler';
+export { LinkClickTracker } from '@/durable-objects/link-click-trackers';
 
 export default class DataService extends WorkerEntrypoint<Env> {
 	constructor(ctx: ExecutionContext, env: Env) {
