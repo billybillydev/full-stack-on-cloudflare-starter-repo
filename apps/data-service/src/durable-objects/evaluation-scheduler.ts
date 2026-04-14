@@ -21,6 +21,8 @@ export class EvaluationScheduler extends DurableObject {
 
 		await this.ctx.storage.put('click_data', this.clickData);
 
+		console.log('collectLinkClick', data);
+
 		const alarm = await this.ctx.storage.getAlarm();
 		if (!alarm) {
 			const tenSeconds = new Dat().addSeconds(10).valueOf();
@@ -32,6 +34,8 @@ export class EvaluationScheduler extends DurableObject {
 		console.log('Evaluation scheduler alarm triggered');
 
 		const clickData = this.clickData;
+
+		console.log('clickData', clickData);
 
 		if (!clickData) throw new Error('Click data not set');
 

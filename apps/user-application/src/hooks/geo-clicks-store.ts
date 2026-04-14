@@ -12,6 +12,7 @@ export const useGeoClickStore = create<GeoClickStore>((set) => ({
 
   addClicks: (clicks) =>
     set((state) => {
+      console.log({ clicks });
       const updated = [...state.clicks, ...clicks];
       if (updated.length > 1000) {
         // Drop oldest

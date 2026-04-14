@@ -15,9 +15,9 @@ export function useClickSocket() {
   useEffect(() => {
     const connect = () => {
       const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const socket = new WebSocket(
-        `${protocol}//${import.meta.env.VITE_BASE_HOST}/click-socket`,
-      );
+      const socketHost =
+        import.meta.env.VITE_BACKEND_HOST || import.meta.env.VITE_BASE_HOST;
+      const socket = new WebSocket(`${protocol}//${socketHost}/click-socket`);
 
       socket.onopen = () => {
         setIsConnected(true);
@@ -26,15 +26,16 @@ export function useClickSocket() {
 
       socket.onmessage = (event) => {
         // Handle incoming messages
-        console.log(event);
+        console.log({ event });
         const data = durableObjectGeoClickArraySchema.parse(
           JSON.parse(event.data),
         );
+        console.log({ data });
         addClicks(data);
       };
 
       socket.onerror = () => {
-        // Error handling if needed
+        console.log('socket error');
       };
 
       socket.onclose = () => {
