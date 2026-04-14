@@ -44,6 +44,7 @@ async function getLinkInfoFromKv(env: Env, id: string) {
 }
 
 export async function scheduleEvalWorkflow(env: Env, event: LinkClickMessageType) {
+	console.log('in scheduleEvalWorkflow', { data: event.data });
 	const durableObjectId = env.EVALUATION_SCHEDULER.idFromName(`${event.data.id}:${event.data.destination}`);
 	const stub = env.EVALUATION_SCHEDULER.get(durableObjectId);
 	await stub.collectLinkClick({

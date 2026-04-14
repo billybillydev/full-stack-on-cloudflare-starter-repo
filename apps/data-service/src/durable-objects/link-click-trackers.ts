@@ -1,13 +1,24 @@
+import { deleteClicksBefore, getRecentClicks } from '@/helpers/durable-queries';
+import { Dat } from '@mosidev/dat';
 import { DurableObject } from 'cloudflare:workers';
 
 export class LinkClickTracker extends DurableObject {
 	sql: SqlStorage;
+	mostRecentOffsetTime: number = 0;
+	leastRecentOffsetTime: number = 0;
 
 	constructor(ctx: DurableObjectState, env: Env) {
 		super(ctx, env);
 		this.sql = ctx.storage.sql;
 
 		ctx.blockConcurrencyWhile(async () => {
+			const [leastRecentOffsetTime, mostRecentOffsetTime] = await Promise.all([
+				ctx.storage.get<number>('leastRecentOffsetTime'),
+				ctx.storage.get<number>('mostRecentOffsetTime'),
+			]);
+
+			this.leastRecentOffsetTime = leastRecentOffsetTime || this.leastRecentOffsetTime;
+			this.mostRecentOffsetTime = mostRecentOffsetTime || this.mostRecentOffsetTime;
 			this.sql.exec(`
             CREATE TABLE IF NOT EXISTS geo_link_clicks (
                 latitude REAL NOT NULL,
@@ -20,6 +31,7 @@ export class LinkClickTracker extends DurableObject {
 	}
 
 	async addClick(latitude: number, longitude: number, country: string, time: number) {
+		console.log("in durable object addclick", { latitude, longitude })
 		this.sql.exec(
 			`
 			INSERT INTO geo_link_clicks (latitude, longitude, country, time)
@@ -30,6 +42,32 @@ export class LinkClickTracker extends DurableObject {
 			country,
 			time,
 		);
+
+		const alarm = await this.ctx.storage.getAlarm();
+		if (!alarm) {
+			await this.ctx.storage.setAlarm(new Dat().addSeconds(2).valueOf());
+		}
+	}
+
+	async alarm() {
+		console.log('alarm');
+		const clickData = getRecentClicks(this.sql, this.mostRecentOffsetTime);
+
+		const sockets = this.ctx.getWebSockets();
+		for (const socket of sockets) {
+			console.log('sending data to socket', clickData.clicks);
+			socket.send(JSON.stringify(clickData.clicks));
+		}
+
+		await this.flushOffsetTimes(clickData.mostRecentTime, clickData.oldestTime);
+		await deleteClicksBefore(this.sql, clickData.oldestTime);
+	}
+
+	async flushOffsetTimes(mostRecentOffsetTime: number, leastRecentOffsetTime: number) {
+		this.mostRecentOffsetTime = mostRecentOffsetTime;
+		this.leastRecentOffsetTime = leastRecentOffsetTime;
+		await this.ctx.storage.put('mostRecentOffsetTime', this.mostRecentOffsetTime);
+		await this.ctx.storage.put('leastRecentOffsetTime', this.leastRecentOffsetTime);
 	}
 
 	async fetch(_: Request) {
@@ -45,6 +83,6 @@ export class LinkClickTracker extends DurableObject {
 	}
 
 	webSocketClose(ws: WebSocket, code: number, reason: string, wasClean: boolean): void | Promise<void> {
-		console.log("client closed")
+		console.log('client closed');
 	}
 }
