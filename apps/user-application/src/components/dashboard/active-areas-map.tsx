@@ -14,6 +14,8 @@ export function ActiveAreasMap() {
 
   const groupedClicks = groupClicksByMile(clicks);
 
+  console.log({ groupedClicks, clicks });
+
   return (
     <Card className="lg:col-span-1 hover:shadow-md transition-all duration-200">
       <CardHeader>
@@ -32,7 +34,7 @@ export function ActiveAreasMap() {
             }}
             width={800}
             height={400}
-            className="w-full h-full"
+            className="w-full h-full border border-red-500"
           >
             <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
               {({ geographies }) =>
