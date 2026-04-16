@@ -1,1 +1,1 @@
-# cf-services-the-course-playground
+# full-stack-on-cloudflare-starter-repo
