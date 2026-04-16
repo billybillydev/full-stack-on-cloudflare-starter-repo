@@ -81,6 +81,8 @@ export function ActiveRegionMap() {
     return groupClicksByMile(filtered);
   }, [clicks, selectedRegion, countryToRegion]);
 
+  console.log({ regionClicks, clicks });
+
   return (
     <Card className="lg:col-span-1 hover:shadow-md transition-all duration-200 ">
       <CardHeader>
@@ -119,7 +121,7 @@ export function ActiveRegionMap() {
             }}
             width={800}
             height={400}
-            className="w-full h-full"
+            className="w-full h-full border border-red-500"
           >
             <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
               {({ geographies }) =>
