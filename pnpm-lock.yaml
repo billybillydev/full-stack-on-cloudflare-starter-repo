@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      tsc:
+        specifier: ^2.0.4
+        version: 2.0.4
     devDependencies:
       '@types/node':
         specifier: ^22.19.7
@@ -7129,6 +7133,11 @@ packages:
       normalize-path: 3.0.0
       plimit-lit: 1.6.1
     dev: true
+
+  /tsc@2.0.4:
+    resolution: {integrity: sha512-fzoSieZI5KKJVBYGvwbVZs/J5za84f2lSTLPYf6AGiIf43tZ3GNrI1QzTLcjtyDDP4aLxd46RTZq1nQxe7+k5Q==}
+    hasBin: true
+    dev: false
 
   /tsconfck@3.1.6(typescript@5.9.3):
     resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}

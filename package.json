@@ -6,7 +6,9 @@
     "build-package": "pnpm --filter @repo/data-ops run build",
     "dev-frontend": "pnpm --filter user-application run dev",
     "dev-data-service": "pnpm --filter data-service run dev",
-    "dev": "pnpm run dev-data-service & pnpm run dev-frontend"
+    "dev": "pnpm run dev-data-service & pnpm run dev-frontend",
+    "deploy-frontend:stage": "pnpm i && pnpm build-package && pnpm --filter user-application run deploy:stage",
+    "deploy-data-service:stage": "pnpm build-package && pnpm --filter data-service run deploy:stage"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +16,8 @@
   "devDependencies": {
     "@types/node": "^22.19.7",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "tsc": "^2.0.4"
   }
 }
