@@ -9,6 +9,12 @@
   "compatibility_date": "2025-07-11",
   "env": {
     "stage": {
+      "routes": [
+        {
+          "custom_domain": true,
+          "pattern": "stage.smrtlk.billybilly.dev",
+        },
+      ],
       "assets": {
         "binding": "ASSETS",
         "not_found_handling": "single-page-application",
@@ -32,6 +38,12 @@
       ],
     },
     "production": {
+      "routes": [
+        {
+          "custom_domain": true,
+          "pattern": "smrtlk.billybilly.dev"
+        }
+      ],
       "assets": {
         "binding": "ASSETS",
         "not_found_handling": "single-page-application",
