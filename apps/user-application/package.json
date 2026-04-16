@@ -5,14 +5,14 @@
   "scripts": {
     "dev": "vite --port 3000 --mode development",
     "start": "vite --port 3000",
-    "build:dev": "vite build && tsc",
+    "build:dev": "vite build --mode development && tsc",
     "build:production": "vite build --mode production && tsc",
     "serve": "vite preview",
     "test": "vitest run",
     "cf-typegen": "wrangler types --env-interface Env",
     "cf-typegen:stage": "wrangler types --env-interface Env --env stage",
-    "deploy:stage": "npm run build:dev && wrangler deploy",
-    "deploy:production": "npm run build:production && wrangler deploy"
+    "deploy:stage": "pnpm run build:dev && wrangler deploy --env=stage  --minify --keep-vars",
+    "deploy:production": "pnpm run build:production && wrangler deploy --env=production  --minify --keep-vars"
   },
   "dependencies": {
     "@better-auth/stripe": "1.3.4",
