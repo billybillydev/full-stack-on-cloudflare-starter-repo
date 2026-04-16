@@ -8,6 +8,7 @@
     "dev-data-service": "pnpm --filter data-service run dev",
     "dev": "pnpm run dev-data-service & pnpm run dev-frontend",
     "deploy-frontend:stage": "pnpm i && pnpm build-package && pnpm --filter user-application run deploy:stage",
+    "deploy-frontend:production": "pnpm i && pnpm build-package && pnpm --filter user-application run deploy:production",
     "deploy-data-service:stage": "pnpm build-package && pnpm --filter data-service run deploy:stage"
   },
   "keywords": [],
