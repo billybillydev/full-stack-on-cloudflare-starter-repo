@@ -8,6 +8,13 @@
       "when": 1776299688325,
       "tag": "0000_solid_nebula",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1777569233405,
+      "tag": "0001_noisy_squadron_sinister",
+      "breakpoints": true
     }
   ]
 }
