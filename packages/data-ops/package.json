@@ -28,8 +28,8 @@
       "default": "./dist/src/durable-objects-helpers/*.js"
     },
     "./auth": {
-      "types": "./dist/src/better-auth/auth.d.ts",
-      "default": "./dist/src/better-auth/auth.js"
+      "types": "./dist/src/auth.d.ts",
+      "default": "./dist/src/auth.js"
     }
   },
   "keywords": [],

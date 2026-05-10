@@ -35,7 +35,7 @@ export function getAuth(google: {
     return auth;
   }
   auth = createBetterAuth(
-    drizzleAdapter(getDb, {
+    drizzleAdapter(getDb(), {
       provider: "sqlite",
       schema: { user, session, account, verification },
     }),
