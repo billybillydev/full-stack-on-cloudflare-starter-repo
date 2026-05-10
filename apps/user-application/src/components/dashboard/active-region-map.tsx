@@ -121,7 +121,7 @@ export function ActiveRegionMap() {
             }}
             width={800}
             height={400}
-            className="w-full h-full border border-red-500"
+            className="w-full h-full"
           >
             <Geographies geography="https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json">
               {({ geographies }) =>

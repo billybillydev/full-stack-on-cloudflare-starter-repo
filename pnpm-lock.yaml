@@ -37,7 +37,7 @@ importers:
         version: 11.1.0
       workers-ai-provider:
         specifier: ^3.0.4
-        version: 3.0.4(@ai-sdk/provider-utils@4.0.13)(@ai-sdk/provider@3.0.7)(ai@6.0.69)(zod@3.25.76)
+        version: 3.0.4(@ai-sdk/provider-utils@4.0.27)(@ai-sdk/provider@3.0.10)(ai@6.0.69)(zod@3.25.76)
       zod:
         specifier: ^3.25.76
         version: 3.25.76
@@ -140,7 +140,7 @@ importers:
         version: 1.158.0(react-dom@19.2.4)(react@19.2.4)
       '@tanstack/react-router-devtools':
         specifier: ^1.154.1
-        version: 1.158.0(@tanstack/react-router@1.158.0)(@tanstack/router-core@1.158.0)(csstype@3.2.3)(react-dom@19.2.4)(react@19.2.4)
+        version: 1.158.0(@tanstack/react-router@1.158.0)(@tanstack/router-core@1.169.2)(csstype@3.2.3)(react-dom@19.2.4)(react@19.2.4)
       '@tanstack/react-table':
         specifier: ^8.21.3
         version: 8.21.3(react-dom@19.2.4)(react@19.2.4)
@@ -345,6 +345,25 @@ packages:
       '@standard-schema/spec': 1.1.0
       eventsource-parser: 3.0.6
       zod: 3.25.76
+    dev: false
+
+  /@ai-sdk/provider-utils@4.0.27(zod@3.25.76):
+    resolution: {integrity: sha512-ubkAJ+xODouwtmN1tYlvTPphH1hPOBfZaEQe8U7skGvFAnIRs9PPpsq57bC2+Ky/MB4yzhd6YOsxTAx9sGpazw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+    dependencies:
+      '@ai-sdk/provider': 3.0.10
+      '@standard-schema/spec': 1.1.0
+      eventsource-parser: 3.0.8
+      zod: 3.25.76
+    dev: false
+
+  /@ai-sdk/provider@3.0.10:
+    resolution: {integrity: sha512-Q3BZ27qfpYqnCYGvE3vt+Qi6LGOF9R5Nmzn+9JoM1lCRsD9mYaIhfJLkSunN48nfGXJ6n+XNV0J/XVpqGQl7Dw==}
+    engines: {node: '>=18'}
+    dependencies:
+      json-schema: 0.4.0
     dev: false
 
   /@ai-sdk/provider@3.0.7:
@@ -871,8 +890,8 @@ packages:
     resolution: {integrity: sha512-z33Il7l5dKjUgGULTqBsQBQwckHh5AbIuxhdsIxDDiZAzBOrZO6q9ogcWC65kU382AfynTfgNumVcNIjuIua6w==}
     dev: true
 
-  /@emnapi/runtime@1.8.1:
-    resolution: {integrity: sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg==}
+  /@emnapi/runtime@1.10.0:
+    resolution: {integrity: sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA==}
     requiresBuild: true
     dependencies:
       tslib: 2.8.1
@@ -2379,7 +2398,7 @@ packages:
     cpu: [wasm32]
     requiresBuild: true
     dependencies:
-      '@emnapi/runtime': 1.8.1
+      '@emnapi/runtime': 1.10.0
     dev: true
     optional: true
 
@@ -2389,7 +2408,7 @@ packages:
     cpu: [wasm32]
     requiresBuild: true
     dependencies:
-      '@emnapi/runtime': 1.8.1
+      '@emnapi/runtime': 1.10.0
     dev: true
     optional: true
 
@@ -3972,6 +3991,11 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
+  /@tanstack/history@1.161.6:
+    resolution: {integrity: sha512-NaOGLRrddszbQj9upGat6HG/4TKvXLvu+osAIgfxPYA+eIvYKv8GKDJOrY2D3/U9MRnKfMWD7bU4jeD4xmqyIg==}
+    engines: {node: '>=20.19'}
+    dev: false
+
   /@tanstack/query-core@5.90.20:
     resolution: {integrity: sha512-OMD2HLpNouXEfZJWcKeVKUgQ5n+n3A2JFmBaScpNDUqSrQSjiveC7dKMe53uJUg1nDG16ttFPz2xfilz6i2uVg==}
     dev: false
@@ -3985,7 +4009,7 @@ packages:
       react: 19.2.4
     dev: false
 
-  /@tanstack/react-router-devtools@1.158.0(@tanstack/react-router@1.158.0)(@tanstack/router-core@1.158.0)(csstype@3.2.3)(react-dom@19.2.4)(react@19.2.4):
+  /@tanstack/react-router-devtools@1.158.0(@tanstack/react-router@1.158.0)(@tanstack/router-core@1.169.2)(csstype@3.2.3)(react-dom@19.2.4)(react@19.2.4):
     resolution: {integrity: sha512-uhciBlsPW67xbDCFyc2RQS00OergfNXYxendGUO2HGy4uTr79aQSCb4l6v+sdlPwUTlzwkAtM6e1illIexF15Q==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -3998,8 +4022,8 @@ packages:
         optional: true
     dependencies:
       '@tanstack/react-router': 1.158.0(react-dom@19.2.4)(react@19.2.4)
-      '@tanstack/router-core': 1.158.0
-      '@tanstack/router-devtools-core': 1.158.0(@tanstack/router-core@1.158.0)(csstype@3.2.3)
+      '@tanstack/router-core': 1.169.2
+      '@tanstack/router-devtools-core': 1.158.0(@tanstack/router-core@1.169.2)(csstype@3.2.3)
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
     transitivePeerDependencies:
@@ -4060,7 +4084,17 @@ packages:
       tiny-warning: 1.0.3
     dev: false
 
-  /@tanstack/router-devtools-core@1.158.0(@tanstack/router-core@1.158.0)(csstype@3.2.3):
+  /@tanstack/router-core@1.169.2:
+    resolution: {integrity: sha512-5sm0DJF1A7Mz+9gy4Gz/lLovNailK3yot4vYvz9MkBUPw26uLnhQiR8hSCYxucjE0wD6Mdlc5l+Z0/XTlZ7xHw==}
+    engines: {node: '>=20.19'}
+    dependencies:
+      '@tanstack/history': 1.161.6
+      cookie-es: 3.1.1
+      seroval: 1.5.4
+      seroval-plugins: 1.5.4(seroval@1.5.4)
+    dev: false
+
+  /@tanstack/router-devtools-core@1.158.0(@tanstack/router-core@1.169.2)(csstype@3.2.3):
     resolution: {integrity: sha512-8FUKfjh8Xz9T9O5yYaiVE0Va5aCMncQyVPKb7yy5M/buDnx9Kh0bPjw/eUZJWftOyxW6/WeR605yjOdx/PnqNw==}
     engines: {node: '>=12'}
     peerDependencies:
@@ -4070,7 +4104,7 @@ packages:
       csstype:
         optional: true
     dependencies:
-      '@tanstack/router-core': 1.158.0
+      '@tanstack/router-core': 1.169.2
       clsx: 2.1.1
       csstype: 3.2.3
       goober: 2.1.18(csstype@3.2.3)
@@ -4577,8 +4611,8 @@ packages:
         optional: true
     dev: true
 
-  /bare-fs@4.5.3:
-    resolution: {integrity: sha512-9+kwVx8QYvt3hPWnmb19tPnh38c6Nihz8Lx3t0g9+4GoIf3/fTgYwM4Z6NxgI+B9elLQA7mLE9PpqcWtOMRDiQ==}
+  /bare-fs@4.7.1:
+    resolution: {integrity: sha512-WDRsyVN52eAx/lBamKD6uyw8H4228h/x0sGGGegOamM2cd7Pag88GfMQalobXI+HaEUxpCkbKQUDOQqt9wawRw==}
     engines: {bare: '>=1.16.0'}
     requiresBuild: true
     peerDependencies:
@@ -4900,6 +4934,10 @@ packages:
 
   /cookie-es@2.0.0:
     resolution: {integrity: sha512-RAj4E421UYRgqokKUmotqAwuplYw15qtdXfY+hGzgCJ/MBjCVZcSoHK/kH9kocfjRjcDME7IiDWR/1WX1TM2Pg==}
+    dev: false
+
+  /cookie-es@3.1.1:
+    resolution: {integrity: sha512-UaXxwISYJPTr9hwQxMFYZ7kNhSXboMXP+Z3TRX6f1/NyaGPfuNUZOWP1pUEb75B2HjfklIYLVRfWiFZJyC6Npg==}
     dev: false
 
   /cookie@1.1.1:
@@ -5489,6 +5527,11 @@ packages:
 
   /eventsource-parser@3.0.6:
     resolution: {integrity: sha512-Vo1ab+QXPzZ4tCa8SwIHJFaSzy4R6SHf7BY79rFBDf0idraZWAkYrDjDj8uWaSm3S2TK+hJ7/t1CEmZ7jXw+pg==}
+    engines: {node: '>=18.0.0'}
+    dev: false
+
+  /eventsource-parser@3.0.8:
+    resolution: {integrity: sha512-70QWGkr4snxr0OXLRWsFLeRBIRPuQOvt4s8QYjmUlmlkyTZkRqS7EDVRZtzU3TiyDbXSzaOeF0XUKy8PchzukQ==}
     engines: {node: '>=18.0.0'}
     dev: false
 
@@ -6659,8 +6702,22 @@ packages:
       seroval: 1.5.0
     dev: false
 
+  /seroval-plugins@1.5.4(seroval@1.5.4):
+    resolution: {integrity: sha512-S0xQPhUTefAhNvNWFg0c1J8qJArHt5KdtJ/cFAofo06KD1MVSeFWyl4iiu+ApDIuw0WhjpOfCdgConOfAnLgkw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      seroval: ^1.0
+    dependencies:
+      seroval: 1.5.4
+    dev: false
+
   /seroval@1.5.0:
     resolution: {integrity: sha512-OE4cvmJ1uSPrKorFIH9/w/Qwuvi/IMcGbv5RKgcJ/zjA/IohDLU6SVaxFN9FwajbP7nsX0dQqMDes1whk3y+yw==}
+    engines: {node: '>=10'}
+    dev: false
+
+  /seroval@1.5.4:
+    resolution: {integrity: sha512-46uFvgrXTVxZcUorgSSRZ4y+ieqLLQRMlG4bnCZKW3qI6BZm7Rg4ntMW4p1mILEEBZWrFlcpp0AyIIlM6jD9iw==}
     engines: {node: '>=10'}
     dev: false
 
@@ -6998,7 +7055,7 @@ packages:
       pump: 3.0.3
       tar-stream: 3.1.7
     optionalDependencies:
-      bare-fs: 4.5.3
+      bare-fs: 4.7.1
       bare-path: 3.0.0
     transitivePeerDependencies:
       - bare-abort-controller
@@ -7545,7 +7602,7 @@ packages:
       '@cloudflare/workerd-windows-64': 1.20260131.0
     dev: true
 
-  /workers-ai-provider@3.0.4(@ai-sdk/provider-utils@4.0.13)(@ai-sdk/provider@3.0.7)(ai@6.0.69)(zod@3.25.76):
+  /workers-ai-provider@3.0.4(@ai-sdk/provider-utils@4.0.27)(@ai-sdk/provider@3.0.10)(ai@6.0.69)(zod@3.25.76):
     resolution: {integrity: sha512-ieDdAyGwg4AF3jKS1aP8fhhEZv7rh8fuWPCcEz0DjOYkvgCtcklx1BLofdmbmi7eLDPjjul38tlnN8/45EFwNg==}
     peerDependencies:
       '@ai-sdk/provider': ^3.0.0
@@ -7553,8 +7610,8 @@ packages:
       ai: ^6.0.0
       zod: ^3.25.0 || ^4.0.0
     dependencies:
-      '@ai-sdk/provider': 3.0.7
-      '@ai-sdk/provider-utils': 4.0.13(zod@3.25.76)
+      '@ai-sdk/provider': 3.0.10
+      '@ai-sdk/provider-utils': 4.0.27(zod@3.25.76)
       ai: 6.0.69(zod@3.25.76)
       zod: 3.25.76
     dev: false
